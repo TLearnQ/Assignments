@@ -203,11 +203,13 @@ sudo ip netns exec router sysctl -w net.ipv4.ip_forward=1
 
 ```
 
-6. Configure NAT on router (iptables example):
+6. Configure NAT on router (iptables example): After adding NAT rule, check the iptables to verify
 
 ```
 
 sudo ip netns exec router iptables -t nat -A POSTROUTING -o veth-wan -j MASQUERADE
+
+sudo iptables -t nat -L
 
 ```
 
